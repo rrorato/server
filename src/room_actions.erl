@@ -83,7 +83,7 @@ handle_action(Receiver, <<"receivePrivateMessage">>, #{<<"sender">> := Sender}) 
     Messages = ets:match_object(private_messages, {Sender, Receiver, '_'}),
     #{<<"state">> => <<"ok">>, <<"messages">> => lists:map(fun({_, _, Message}) -> Message end, Messages)};
 
-% private rooms
+% private rooms (via invitation)
 handle_action(Name, <<"inviteInRoom">>, #{<<"room">> := Room, <<"user">> := User}) ->
     case ets:lookup(rooms, Room) of
         [{Room, Name, <<"private">>, _}] ->
