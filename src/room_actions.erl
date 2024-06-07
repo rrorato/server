@@ -93,7 +93,7 @@ handle_action(Name, <<"inviteInRoom">>, #{<<"room">> := Room, <<"user">> := User
             utils:build_dict("error", "roomNotFound")
     end;
 
-% other
+% other or unknown
 handle_action(_Name, _Action, _ActionSpecs) ->
     io:format("~p taking unknown action ~p with options ~p ~n", [_Name, _Action, _ActionSpecs]),
     utils:build_dict("error", "unknownAction").
