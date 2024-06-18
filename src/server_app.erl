@@ -5,10 +5,13 @@
 
 
 start(_StartType, _StartArgs) ->
+    % persistency:create_tables(),
+    % persistency:read_state(),
     ServPid = start_server(),
     {ok, ServPid}.
 
 stop(_State) ->
+    % persistency:save_state(),
     ok.
 
 start_server() ->
